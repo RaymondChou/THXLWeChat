@@ -1,0 +1,45 @@
+# Ignore bundler config
+/.bundle
+
+# Ignore the default SQLite database.
+/db/*.sqlite3
+
+# Ignore all logfiles and tempfiles.
+/log/*.log
+/tmp
+
+/lib/assets/barcode.png
+
+/db/schema.rb
+
+.idea
+.DS_Store
+Thumbs.db
+.cache
+.project
+.settings
+.tmproj
+*.esproj
+nbproject
+
+
+.sass-cache/
+backups/*
+
+.rvmrc
+.rbenv-version
+
+nohup.out
+
+# compile in here
+/public/assets/*
+
+/config/database.yml
+
+coverage/*
+
+/public/statics/*
+
+rails_best_practices_output.html
+
+*.rdb
