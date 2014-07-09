@@ -64,5 +64,19 @@ module THXLWeChat
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    config.time_zone = 'Beijing'
+    config.active_record.default_timezone = :local
+
+    config.middleware.delete Rack::Lock
+
+    unless Rails.env == 'development'
+      # assign log4r's logger as rails' logger.
+      log4r_config = YAML.load_file(File.join(File.dirname(__FILE__), 'log4r.yml'))
+      YamlConfigurator.decode_yaml( log4r_config['log4r_config'] )
+      config.logger = Log4r::Logger[Rails.env]
+    end
+
+    config.exceptions_app = self.routes
   end
 end

@@ -1,0 +1,47 @@
+log4r_config:
+
+  loggers:
+    - name      : production
+      level     : WARN
+      trace     : 'false'
+      outputters :
+      - datefile_production
+    - name      : staging
+      level     : WARN
+      trace     : 'false'
+      outputters :
+      - datefile_staging
+    - name      : development
+      level     : DEBUG
+      trace     : 'true'
+      outputters :
+      - datefile_development
+
+  outputters:
+
+    - type: DateFileOutputter
+      name: datefile_production
+      dirname: "log"
+      filename: "production.log"
+      formatter:
+        date_pattern: '%H:%M:%S'
+        pattern     : '%d %l: %m '
+        type        : PatternFormatter
+
+    - type: DateFileOutputter
+      name: datefile_staging
+      dirname: "log"
+      filename: "staging.log"
+      formatter:
+        date_pattern: '%H:%M:%S'
+        pattern     : '%d %l: %m '
+        type        : PatternFormatter
+
+    - type: DateFileOutputter
+      name: datefile_development
+      dirname: "log"
+      filename: "development.log"
+      formatter:
+        date_pattern: '%H:%M:%S'
+        pattern     : '%d %l: %m '
+        type        : PatternFormatter
