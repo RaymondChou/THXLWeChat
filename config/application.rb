@@ -1,5 +1,12 @@
 require File.expand_path('../boot', __FILE__)
 
+require 'rails/all'
+
+require 'log4r'
+require 'log4r/yamlconfigurator'
+require 'log4r/outputter/datefileoutputter'
+include Log4r
+
 # Pick the frameworks you want:
 require "active_record/railtie"
 require "action_controller/railtie"
@@ -73,7 +80,7 @@ module THXLWeChat
     unless Rails.env == 'development'
       # assign log4r's logger as rails' logger.
       log4r_config = YAML.load_file(File.join(File.dirname(__FILE__), 'log4r.yml'))
-      Log4r::YamlConfigurator.decode_yaml( log4r_config['log4r_config'] )
+      YamlConfigurator.decode_yaml( log4r_config['log4r_config'] )
       config.logger = Log4r::Logger[Rails.env]
     end
 
