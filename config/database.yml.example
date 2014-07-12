@@ -35,7 +35,7 @@ production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: THXLWeChat_production
+  database: thxl
   pool: 10
   username: thxl
   password: thxlthxl
