@@ -1,0 +1,33 @@
+button:
+  -
+    name: "雪佛兰车型"
+    sub_button:
+      -
+        type: "view"
+        name: "搜索"
+        url: "http://www.soso.com/"
+      -
+        type: "click"
+        name: "测试点击"
+        key: "click1"
+
+  -
+    name: "在线服务"
+    sub_button:
+      -
+        type: "view"
+        name: "优惠活动"
+        url: "http://***"
+      -
+        type: "view"
+        name: "搜索"
+        url: "http://www.soso.com/"
+      -
+        type: "click"
+        name: "测试点击"
+        key: "click1"
+
+  -
+    type: "view"
+    name: "微官网"
+    url: "http://192.168.199.220:3000/"

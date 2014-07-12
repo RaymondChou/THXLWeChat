@@ -11,5 +11,9 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
-//= require jquery_ujs
-//= require_tree .
+//= require jquery-1.2.6.pack
+//= require g.base
+//= require iscroll
+//= require alert
+//= require common
+

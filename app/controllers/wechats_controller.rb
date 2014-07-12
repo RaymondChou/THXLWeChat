@@ -1,6 +1,10 @@
 class WechatsController < ApplicationController
   wechat_responder
 
+  on :event, :with => 'subscribe' do |request, content|
+    request.reply.text "关注后回复测试"
+  end
+
   # 默认的文字信息responder
   on :text do |request, content|
     request.reply.text "echo: #{content}" #Just echo
