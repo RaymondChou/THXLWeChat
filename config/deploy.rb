@@ -2,7 +2,7 @@ require 'bundler/capistrano'
 require 'capistrano/ext/multistage'
 require 'rvm/capistrano'
 
-set :rvm_ruby_string, '2.1.0'
+set :rvm_ruby_string, '2.0.0'
 set :stages, %w(staging production)
 set :default_stage, 'staging'
 
