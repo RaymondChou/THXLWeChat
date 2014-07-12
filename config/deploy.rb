@@ -11,8 +11,6 @@ load 'config/recipes/check'
 load 'config/recipes/nginx'
 load 'config/recipes/mysql'
 load 'config/recipes/unicorn'
-load 'config/recipes/couchbase'
-load 'config/recipes/output'
 
 set :application, 'thxl'
 set :user, 'deployer'
@@ -21,7 +19,7 @@ set :use_sudo, false
 set :sudo, 'sudo'
 
 set :scm, 'git'
-set :repository, "git@github.com:iiseeuu/Buffet.git"
+set :repository, "git@github.com:RaymondChou/THXLWeChat.git"
 
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
