@@ -78,6 +78,8 @@ gem 'Rwepay', :git => 'https://github.com/RaymondChou/Rwepay.git', :branch => 'm
 
 gem 'rails3-jquery-autocomplete'
 
+gem 'wechat-rails'
+
 # Code128
 gem 'chunky_png'
 gem 'barby'

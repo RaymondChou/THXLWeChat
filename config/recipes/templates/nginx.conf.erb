@@ -1,0 +1,32 @@
+#user  nobody;
+worker_processes  4;
+worker_rlimit_nofile  65535;
+
+#error_log  logs/error.log;
+#error_log  logs/error.log  notice;
+#error_log  logs/error.log  info;
+
+#pid  logs/nginx.pid;
+
+
+events {
+    worker_connections  65535;
+    use epoll;
+}
+
+
+http {
+    include  mime.types;
+    default_type  application/octet-stream;
+    keepalive_timeout  60;
+    sendfile  on;
+    gzip  on;
+
+    #将未绑定的域名全部指向fp.memeing.cn
+    server {
+        listen 80 default;
+        rewrite ^(.*) http://fp.memeing.cn$1 permanent;
+    }
+
+    include sites-enabled/*;
+}
