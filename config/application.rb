@@ -73,7 +73,7 @@ module THXLWeChat
     unless Rails.env == 'development'
       # assign log4r's logger as rails' logger.
       log4r_config = YAML.load_file(File.join(File.dirname(__FILE__), 'log4r.yml'))
-      YamlConfigurator.decode_yaml( log4r_config['log4r_config'] )
+      Log4r::YamlConfigurator.decode_yaml( log4r_config['log4r_config'] )
       config.logger = Log4r::Logger[Rails.env]
     end
 
