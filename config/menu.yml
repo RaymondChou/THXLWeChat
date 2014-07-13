@@ -1,33 +1,72 @@
 button:
   -
-    name: "雪佛兰车型"
+    name: "销售展厅"
     sub_button:
       -
         type: "view"
-        name: "搜索"
-        url: "http://www.soso.com/"
+        name: "最新资讯"
+        url: "http://thxl.memeing.cn/"
       -
-        type: "click"
-        name: "测试点击"
-        key: "click1"
+        type: "view"
+        name: "在售车型"
+        url: "http://thxl.memeing.cn/"
+      -
+        type: "view"
+        name: "优惠促销"
+        url: "http://thxl.memeing.cn/"
+      -
+        type: "view"
+        name: "车展团购报名"
+        url: "http://thxl.memeing.cn/"
+      -
+        type: "view"
+        name: "联系销售"
+        url: "http://thxl.memeing.cn/"
 
   -
-    name: "在线服务"
+    name: "售后服务"
     sub_button:
       -
         type: "view"
-        name: "优惠活动"
-        url: "http://***"
+        name: "24小时救援"
+        url: "http://thxl.memeing.cn/"
       -
         type: "view"
-        name: "搜索"
-        url: "http://www.soso.com/"
+        name: "预约保养"
+        url: "http://thxl.memeing.cn/"
       -
-        type: "click"
-        name: "测试点击"
-        key: "click1"
+        type: "view"
+        name: "金领结服务"
+        url: "http://thxl.memeing.cn/"
+      -
+        type: "view"
+        name: "常用配件查询"
+        url: "http://thxl.memeing.cn/"
+      -
+        type: "view"
+        name: "保养促销"
+        url: "http://thxl.memeing.cn/"
 
   -
-    type: "view"
-    name: "微官网"
-    url: "http://192.168.199.220:3000/"
+    name: "车主之家"
+    sub_button:
+      -
+        type: "view"
+        name: "爱车提醒"
+        url: "http://thxl.memeing.cn/"
+      -
+        type: "view"
+        name: "违章查询"
+        url: "http://thxl.memeing.cn/"
+      -
+        type: "view"
+        name: "潮人堂会员"
+        url: "http://thxl.memeing.cn/"
+      -
+        type: "view"
+        name: "车主活动"
+        url: "http://thxl.memeing.cn/"
+      -
+        type: "view"
+        name: "MyChavy"
+        url: "http://thxl.memeing.cn/"

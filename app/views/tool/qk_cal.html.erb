@@ -1,0 +1,212 @@
+<%= stylesheet_link_tag 'tool' %>
+<%= javascript_include_tag 'tool_jquery' %>
+<%= javascript_include_tag 'tool_cal' %>
+
+<div class="mbt-page" style="margin-bottom: 50px">
+  <div class="m-line-box">
+    <div class="m-tabs-box">
+      <ul class="m-tabs">
+        <li class="current"><span><a href="">全款计算</a><s></s></span></li>
+        <li><span><a href="/tool/dk_cal">贷款计算</a><s></s></span></li>
+        <li><span><a href="/tool/bx_cal">保险计算</a><s></s></span></li>
+      </ul>
+    </div>
+    <div class="m-calculator">
+      <div class="m-calculator-head">
+        <input type="text" id="show_money" value="0" class="onfocus"><em>（元）</em>
+        <div class="clear">
+        </div>
+        <input type="button" id="btnSubmit" value="开始计算">
+      </div>
+      <ul class="m-calculator-list">
+        <li class="list-head"><span>全款购车共需花费：</span> <strong id="show_total">0元</strong>
+        </li>
+        <li><span>购置税：</span> <b id="show_gouzhitax">0元</b> </li>
+        <li><span>上牌费用：</span> <b id="show_chepai">0元</b> </li>
+        <li><span>车船使用税：</span> <b id="show_chechuantax">0元</b> <strong><a id="even_chechuantax" href="javascript:;">设置</a></strong></li>
+        <li id="popup_chechuantax" style="display: none;" class="m-popup-item m-popup-arrow m-popup-insurance">
+          <b></b>
+          <div class="m-popup-box">
+            <div class="m-popup">
+              <label>
+                <input type="radio" name="r_checuantax" value="1">1.0L(含)以下</label>
+              <label>
+                <input type="radio" name="r_checuantax" value="2">1.0-1.6L(含)</label>
+              <label>
+                <input type="radio" name="r_checuantax" value="3" checked="">1.6-2.0L(含)</label>
+              <label>
+                <input type="radio" name="r_checuantax" value="4">2.0-2.5L(含)</label>
+              <label>
+                <input type="radio" name="r_checuantax" value="5">2.5-3.0L(含)</label>
+              <label>
+                <input type="radio" name="r_checuantax" value="6">3.0-4.0L(含)</label>
+              <label>
+                <input type="radio" name="r_checuantax" value="7">4.0L以上</label>
+              <div class="clear">
+              </div>
+            </div>
+          </div>
+        </li>
+        <li><span>交强险：</span> <b id="show_jiaoqiang">0元</b> <strong><a id="even_jiaoqiang" href="javascript:;">设置</a></strong></li>
+        <li id="popup_jiaoqiang" style="display: none;" class="m-popup-item m-popup-arrow m-popup-insurance">
+          <b></b>
+          <div class="m-popup-box">
+            <div class="m-popup">
+              <label>
+                <input type="radio" name="r_jiaoqiang" value="0" checked="">家用6座以下</label>
+              <label>
+                <input type="radio" name="r_jiaoqiang" value="5">家用6座及以上</label>
+              <div class="clear">
+              </div>
+            </div>
+          </div>
+        </li>
+        <li><span>商业险：</span> <b id="show_shangye">0元</b> </li>
+      </ul>
+      <div class="m-popup-arrow-top">
+      </div>
+      <ul class="m-calculator-sub-list">
+        <li><span>第三责任险：</span> <b id="show_zeren">0元</b> <strong><a id="even_zeren" href="javascript:;">
+          设置</a></strong> </li>
+        <li id="popup_zeren" style="display: none;" class="m-popup-item m-popup-arrow m-popup-insurance">
+          <b></b>
+          <div class="m-popup-box">
+            <div class="m-popup">
+              <label>
+                <input type="radio" name="thirdInsurance" value="0">无</label>
+              <label>
+                <input type="radio" name="thirdInsurance" value="5">5万</label>
+              <label>
+                <input type="radio" name="thirdInsurance" value="10" checked="">10万</label>
+              <label>
+                <input type="radio" name="thirdInsurance" value="20">20万</label>
+              <label>
+                <input type="radio" name="thirdInsurance" value="50">50万</label>
+              <label>
+                <input type="radio" name="thirdInsurance" value="100">100万</label>
+              <div class="clear">
+              </div>
+            </div>
+          </div>
+        </li>
+        <li><span>车辆损失险：</span> <b id="show_sunshi">0元</b> <strong><em id="even_sunshi">开<s></s></em></strong>
+        </li>
+        <li><span>全车盗抢险：</span> <b id="show_daoqiang">0元</b> <strong><em id="even_daoqiang">
+          开<s></s></em></strong> </li>
+        <li><span>玻璃单独破碎险：</span> <b id="show_boliposui">0元</b> <strong><a id="even_boliposui" href="javascript:;">设置</a></strong> </li>
+        <li id="popup_boliposui" style="display: none;" class="m-popup-item m-popup-arrow m-popup-insurance">
+          <b></b>
+          <div class="m-popup-box">
+            <div class="m-popup">
+              <label>
+                <input type="radio" name="r_boliposui" value="0">无</label>
+              <label>
+                <input type="radio" name="r_boliposui" value="1">进口</label>
+              <label>
+                <input type="radio" name="r_boliposui" value="2" checked="">国产</label>
+              <div class="clear">
+              </div>
+            </div>
+          </div>
+        </li>
+        <li><span>自然损失险：</span> <b id="show_ziransunshi">0元</b> <strong><em id="even_ziransunshi">
+          开<s></s></em></strong> </li>
+        <li><span>不计免赔特约险：</span> <b id="show_bujimianpei">0元</b> <strong><em id="even_bujimianpei">
+          开<s></s></em></strong> </li>
+        <li><span>无过责任险：</span> <b id="show_wuguozeren">0元</b> <strong><em id="even_wuguozeren">
+          开<s></s></em></strong> </li>
+        <li><span>车上人员责任险：</span> <b id="show_renyuanzeren">0元</b> <strong><em id="even_reyuanzeren">
+          开<s></s></em></strong> </li>
+        <li><span>车身划痕险：</span> <b id="show_cheshenhuahen">0元</b> <strong><a id="even_cheshenhuahen" href="javascript:;">设置</a></strong> </li>
+        <li id="popup_cheshenhuahen" style="display: none;" class="m-popup-item m-popup-arrow m-popup-insurance">
+          <b></b>
+          <div class="m-popup-box">
+            <div class="m-popup">
+              <label>
+                <input type="radio" name="r_cheshenhuahen" value="0">无</label>
+              <label>
+                <input type="radio" name="r_cheshenhuahen" value="2000">2千</label>
+              <label>
+                <input type="radio" name="r_cheshenhuahen" value="5000" checked="">5千</label>
+              <label>
+                <input type="radio" name="r_cheshenhuahen" value="10000">1万</label>
+              <label>
+                <input type="radio" name="r_cheshenhuahen" value="20000">2万</label>
+              <div class="clear">
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="m-statement">
+        此结果仅供参考，实际费用以当地缴费为准。</div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  //车船使用税
+  resetPrice(0);
+  //选择车款
+  function selectCarId(carId){
+    loadCarInfoData(carId);
+  }
+  function calcAutoCashAll() {
+    if(!checkMoneyValidation()) return;
+    if ($('#show_money').val() == 0) {
+      $("strong[id^='show_'],b[id^='show_']").html("0元");
+      return;
+    }
+    if ($('#show_money').val() != "0") {
+      $("#show_chepai").html("500元");
+      $("#show_renyuanzeren").html("50元");
+    }
+    //购置税
+    calcAcquisitionTax();
+    //车船使用税
+    CalculateVehicleAndVesselTax();
+    //交强险
+    calcCompulsory();
+    //第三责任险
+    calcTPL();
+    //车辆损失险
+    calcCarDamage();
+    //全车盗抢险
+    calcCarTheft();
+    //玻璃单独破碎险
+    calcBreakageOfGlass();
+    //自然损失险
+    calcSelfignite();
+    //不计免赔特约险
+    calcAbatement();
+    //无过责任险
+    calcBlameless();
+    //车上责任险
+    calcLimitofPassenger();
+    //车身划痕险
+    calcCarDamageDW();
+    //商业险
+    calcCommonTotal();
+    //计算总价
+    calcTotal();
+    //格式化数字千位符
+    $("strong[id^='show_'],b[id^='show_']").html(function(index,html){return formatCurrency(parseInt(html))+"元";})
+  }
+
+  $("#btnSubmit").bind("click", function () { calcAutoCashAll(); });
+  $("#show_money").focus(function(){var money=parseInt($(this).val());if(money<=0)$(this).val(""); });
+  $("input[name='thirdInsurance'],input[name='r_boliposui'],input[name='r_cheshenhuahen'],input[name='r_jiaoqiang'],input[name='r_checuantax']").bind("click", calcAutoCashAll);
+  $("#even_zeren,#even_cheshenhuahen,#even_chechuantax,#even_jiaoqiang,#even_boliposui").toggle(function () {$(this).parent().parent().next().show(); },
+          function () { $(this).parent().parent().next().hide(); });
+  $("#even_sunshi,#even_daoqiang,#even_ziransunshi,#even_bujimianpei,#even_wuguozeren,#even_reyuanzeren").click(function () {
+    if ($(this).parent().parent().attr("class") == "off") {
+      $(this).html("开<s></s>").parent().parent().removeClass("off");
+    } else {
+      $(this).html("关<s></s>").parent().parent().addClass("off");
+    }
+    calcAutoCashAll();
+  });
+  var url = "http://thxl.memeing.cn";
+</script>
+
+<%= javascript_include_tag 'tool_an' %>
