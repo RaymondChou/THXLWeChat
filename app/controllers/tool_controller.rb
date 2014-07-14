@@ -12,4 +12,12 @@ class ToolController < ApplicationController
 
   end
 
+  def weizhang
+
+  end
+
+  def weizhang_result
+
+  end
+
 end
