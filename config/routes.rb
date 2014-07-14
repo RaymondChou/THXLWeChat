@@ -8,5 +8,4 @@ THXLWeChat::Application.routes.draw do
   get '/tool/dk_cal', 'tool#dk_cal'
   get '/tool/qk_cal', 'tool#qk_cal'
 
-
 end
