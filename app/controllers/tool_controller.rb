@@ -1,3 +1,5 @@
+require 'nokogiri'
+
 class ToolController < ApplicationController
 
   def bx_cal
@@ -17,6 +19,8 @@ class ToolController < ApplicationController
   end
 
   def weizhang_result
+    # 苏a6wk70
+    # 120056
     licence = params[:licence].upcase
     engine_code = params[:engine_code]
 
@@ -28,6 +32,21 @@ class ToolController < ApplicationController
           weizhang.result = result['data']
           weizhang.job_status = 1
           weizhang.save
+
+          items = Array.new
+          doc = Nokogiri.HTML(result['data'])
+          doc.search('table').search('tbody').search('tr').each do |tr|
+            tds = tr.search('td')
+            items << {:id => tds[0].text, :time => tds[1].text, :addr => tds[2].text, :fen => tds[3].text, :qian => tds[4].text, :handle => tds[5].text}
+          end
+          p items
+
+          if items.blank?
+
+          else
+
+          end
+
           render :json => {:content => result['data'], :job_status => result['job_status']}
         else
           render :json => {:job_id => result['job_id'], :job_status => result['job_status']}

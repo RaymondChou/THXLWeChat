@@ -11,6 +11,64 @@
 </head>
 <body>
 
+<script>
+  function ShowProgressBar() {
+    displayProgress();
+    displayMaskFrame();
+    masked = true;
+    $(window).resize(function(){
+      if(masked == true){
+        displayMaskFrame();
+        displayProgress();
+      }
+    });
+  }
+
+  function HideProgressBar() {
+    var progress = $('#divProgress');
+    var maskFrame = $("#divMaskFrame");
+    progress.hide();
+    maskFrame.hide();
+    masked = false;
+  }
+
+  function displayProgress() {
+    var w = $(document).width();
+    var h = $(window).height();
+    var progress = $('#divProgress');
+    progress.css({ "z-index": 999999, "top": (h / 2) - (progress.height() / 2), "left": (w / 2) - (progress.width() / 2) });
+    progress.show();
+  }
+
+  function displayMaskFrame() {
+    var w = $(window).width();
+    var h = $(document).height();
+    var maskFrame = $("#divMaskFrame");
+    maskFrame.css({ "z-index": 999998, "opacity": 0.7, "width": w, "height": h });
+    maskFrame.show();
+  }
+
+  window.weixinReady = false;
+  window.weixinReadyCallBack = '';
+  document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+
+    WeixinJSBridge.call('hideToolbar');
+
+    window.weixinReady = true;
+
+    if (window.weixinReadyCallBack) {
+      window.weixinReadyCallBack();
+    }
+  }, false);
+</script>
+
+<div id="divProgress" style="text-align:center; display: none; position: fixed; top: 50%;  left: 50%;" >
+  <%= image_tag 'loading.gif', :width => 40, :height => 40 %>
+  <br />
+  <a style="color: white;font-size: 16px;font-weight: bold"  id="wait_text">请稍后...</a>
+</div>
+<div id="divMaskFrame" style="background-color: #2e2e2e; display: none; left: 0;position: absolute; top: 0;"></div>
+
 <%= yield %>
 
 <div class="footer">

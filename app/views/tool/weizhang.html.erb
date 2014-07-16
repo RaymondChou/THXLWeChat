@@ -6,7 +6,8 @@
   }
 </style>
 <div class="main_body">
-  <form>
+  <div id="table_body" style="display: none"></div>
+  <form id="form_body">
 
       <label>车牌号
         <input type="text" placeholder="请输入车牌号：苏AXXXXX" name="licence" id="licence">
@@ -37,11 +38,18 @@
         url: '/tool/weizhang_result',
         data: {licence:licence, engine_code:engine_code},
         success: function(data){
+          ShowProgressBar();
           if(data.job_status == 2){
             setTimeout(get_job(), 2000);
           }else{
-            alert(data.content);
+            HideProgressBar();
+            $('#form_body').slideUp();
+            $('#table_body').html(data.content).slideDown();
           }
+        },
+        error:function(){
+          alert('网络异常，请稍后再试！');
+          HideProgressBar();
         },
         dataType: 'json'
       });
@@ -59,8 +67,14 @@
         if(data.job_status == 2){
           setTimeout(get_job(), 2000);
         }else{
-          alert(data.content);
+          HideProgressBar();
+          $('#form_body').slideUp();
+          $('#table_body').html(data.content).slideDown();
         }
+      },
+      error:function(){
+        alert('网络异常，请稍后再试！');
+        HideProgressBar();
       },
       dataType: 'json'
     });
