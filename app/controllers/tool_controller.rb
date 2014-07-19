@@ -24,6 +24,9 @@ class ToolController < ApplicationController
     licence = params[:licence].upcase
     engine_code = params[:engine_code]
 
+    cookies[:licence] = licence
+    cookies[:engine_code] = engine_code
+
     weizhang = WeiZhang.find_by_licence(licence)
     if weizhang.present?
       if weizhang.job_status != 1
@@ -37,17 +40,10 @@ class ToolController < ApplicationController
           doc = Nokogiri.HTML(result['data'])
           doc.search('table').search('tbody').search('tr').each do |tr|
             tds = tr.search('td')
-            items << {:id => tds[0].text, :time => tds[1].text, :addr => tds[2].text, :fen => tds[3].text, :qian => tds[4].text, :handle => tds[5].text}
-          end
-          p items
-
-          if items.blank?
-
-          else
-
+            items << {:id => tds[0].text, :time => tds[1].text, :addr => tds[2].text, :event => tds[3].text.gsub('的',''), :fen => tds[4].text, :qian => tds[5].text, :handle => tds[6].text}
           end
 
-          render :json => {:content => result['data'], :job_status => result['job_status']}
+          render :json => {:content => items, :job_status => result['job_status']}
         else
           render :json => {:job_id => result['job_id'], :job_status => result['job_status']}
         end
@@ -60,7 +56,13 @@ class ToolController < ApplicationController
         weizhang.save
 
         if job['data'].present?
-          render :json => {:content => job['data'], :job_status => job['job_status']}
+          items = Array.new
+          doc = Nokogiri.HTML(job['data'])
+          doc.search('table').search('tbody').search('tr').each do |tr|
+            tds = tr.search('td')
+            items << {:id => tds[0].text, :time => tds[1].text, :addr => tds[2].text, :event => tds[3].text.gsub('的',''), :fen => tds[4].text, :qian => tds[5].text, :handle => tds[6].text}
+          end
+          render :json => {:content => items, :job_status => job['job_status']}
         else
           render :json => {:job_id => job['job_id'], :job_status => job['job_status']}
         end
@@ -78,7 +80,13 @@ class ToolController < ApplicationController
       weizhang.save
 
       if job['data'].present?
-        render :json => {:content => job['data'], :job_status => job['job_status']}
+        items = Array.new
+        doc = Nokogiri.HTML(job['data'])
+        doc.search('table').search('tbody').search('tr').each do |tr|
+          tds = tr.search('td')
+          items << {:id => tds[0].text, :time => tds[1].text, :addr => tds[2].text, :event => tds[3].text.gsub('的',''), :fen => tds[4].text, :qian => tds[5].text, :handle => tds[6].text}
+        end
+        render :json => {:content => items, :job_status => job['job_status']}
       else
         render :json => {:job_id => job['job_id'], :job_status => job['job_status']}
       end

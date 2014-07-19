@@ -14,6 +14,5 @@
 //= require jquery-1.2.6.pack
 //= require g.base
 //= require iscroll
-//= require alert
 //= require common
 

@@ -1,25 +1,40 @@
-<%= stylesheet_link_tag 'foundation.min' %>
-
-<style>
-  body{
-    background: #F3F3F3;
-  }
-</style>
+<%
+   content_for :styles do
+     stylesheet_link_tag 'tool/weizhang'
+   end
+%>
+<div class="banner">
+  <%= image_tag 'banner/1.jpg' %>
+  <a class="tip">
+    <span>
+      违章查询
+    </span>
+  </a>
+</div>
 <div class="main_body">
-  <div id="table_body" style="display: none"></div>
-  <form id="form_body">
+  <div class="ui form segment" id="form_body">
+    <div class="field">
+      <label>车牌号</label>
+      <div class="ui left labeled icon input">
+        <input type="text" placeholder="请输入车牌号：苏AXXXXX" name="licence" id="licence" value="<%= cookies[:licence] %>">
+      </div>
+    </div>
+    <div class="field">
+      <label>发动机号后六位</label>
+      <div class="ui left labeled icon input">
+        <input type="tel" pattern="[0-9]{6}" placeholder="请输入发动机号后六位" name="engine_code" id="engine_code" value="<%= cookies[:engine_code] %>">
+      </div>
+    </div>
 
-      <label>车牌号
-        <input type="text" placeholder="请输入车牌号：苏AXXXXX" name="licence" id="licence">
-      </label>
+    <div class="ui warning message" style="display: block">
+      <p>*目前只支持南京车牌查询(苏A)</p>
+    </div>
 
-      <label>发动机号后六位
-        <input type="text" placeholder="请输入发动机号后六位" name="engine_code" id="engine_code">
-      </label>
+    <div class="ui orange submit button attached" id="cha">查询</div>
+  </div>
 
-      <a class="button expand" id="cha" style="margin-top: 30px;">查询</a>
-
-  </form>
+  <div id="table_body" style="display: none">
+  </div>
 </div>
 
 <script>
@@ -43,8 +58,20 @@
             setTimeout(get_job(), 2000);
           }else{
             HideProgressBar();
-            $('#form_body').slideUp();
-            $('#table_body').html(data.content).slideDown();
+            $('#form_body').hide();
+            $('#table_body').empty();
+
+            if(data.content.length == 0){
+              $('#table_body').append('<div class="ui error message" style="display: block"><p>车牌号或车架号输入错误或无违章记录！</p></div>');
+            }else{
+              $(data.content).each(function(i,e){
+                show_content(e);
+              });
+            }
+
+            $('#table_body').append('<div class="ui orange submit button attached" id="back">继续查询</div>');
+            $('#table_body').show();
+            bind_back();
           }
         },
         error:function(){
@@ -68,8 +95,20 @@
           setTimeout(get_job(), 2000);
         }else{
           HideProgressBar();
-          $('#form_body').slideUp();
-          $('#table_body').html(data.content).slideDown();
+          $('#form_body').hide();
+          $('#table_body').empty();
+
+          if(data.content.length == 0){
+            $('#table_body').append('<div class="ui error message" style="display: block"><p>车牌号或车架号输入错误或无违章记录！</p></div>');
+          }else{
+            $(data.content).each(function(i,e){
+              show_content(e);
+            });
+          }
+
+          $('#table_body').append('<div class="ui orange submit button attached" id="back">继续查询</div>');
+          $('#table_body').show();
+          bind_back();
         }
       },
       error:function(){
@@ -77,6 +116,31 @@
         HideProgressBar();
       },
       dataType: 'json'
+    });
+  }
+
+  function show_content(data){
+    html = '<div class="ui column grid" style="display: block;margin-bottom: 10px;">\
+    <div class="row">\
+            <div class="column">\
+            <div class="ui raised segment">\
+            <div class="ui orange ribbon label">'+data.handle+'</div>\
+    <p>'+data.event+'</p>\
+    <p style="color: #888;">地点：'+data.addr+'</p>\
+    <p style="color: #888;">时间：'+data.time+'</p>\
+    <p style="color: #888;">记分：'+data.fen+'分</p>\
+    <p style="color: #888;">罚款：'+data.qian+'元</p>\
+    </div>\
+    </div>\
+    </div>\
+    </div>';
+    $('#table_body').append(html);
+  }
+
+  function bind_back(){
+    $('#back').click(function(){
+      $('#table_body').hide();
+      $('#form_body').show();
     });
   }
 </script>

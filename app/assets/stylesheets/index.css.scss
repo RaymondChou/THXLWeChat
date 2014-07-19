@@ -1,0 +1,16 @@
+.content{ padding:5px; overflow:hidden;}
+.content a{ float:left; height:80px; width:23.875%; margin:0px 1.5% 5px 0px; display:block;}
+.content a:first-child{ width:49.25%; height:185px; background:#E3AA00;}
+.content a:nth-child(2){  background:#66A9D3;}
+.content a:nth-child(3){  background:#D94D2F; margin-right:0px;}
+.content a:nth-child(4){ width:49.25%; background:#F27522;margin-right:0px; height:100px;}
+.content a:nth-child(5){ background:#60ACA8;}
+.content a:nth-child(6){ background:#5DAC7C;}
+.content a:nth-child(7){ background:#E3AA00;}
+.content a:nth-child(8){ background:#66A9D3; margin-right:0px;}
+
+.content a div.img{ width:40px; height:40px; background:#093;  margin:0px auto; margin-top:5px;}
+.content a div.text{ text-align:center;text-align:center; color:#FFF; font-size:15px; margin-top:5px;}
+.content a:first-child div.img{ width:80px; height:80px; margin:0px auto; background:#066; margin-top:30px;}
+.content a:first-child div.text{  padding-top:20px;}
+.content a:nth-child(4) div.img{ width:50px; height:50px; margin-top:10px;}
