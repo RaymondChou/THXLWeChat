@@ -1,0 +1,33 @@
+<%
+   content_for :styles do
+     stylesheet_link_tag 'cars'
+   end
+%>
+
+<div class="tbanner">
+  <%= image_tag 'banner/2.jpg' %>
+  <a class="tip">
+    <span>
+      雪佛兰车型
+    </span>
+  </a>
+</div>
+
+<div class="main_body">
+
+  <div class="ui selection list">
+
+    <% @cars.each do |car| %>
+    <div class="item" style="text-align: right">
+      <img style="width: 40%;" src="<%= car.image %>">
+      <div class="content" style="">
+        <div class="header" style="font-size: 16px;"><%= car.name %><%= car.en.upcase %><br></div><br>
+        <span class="ico">￥</span><span class="text_orange" style="font-size: 18px;"><%= car.price %></span> 元起
+      </div>
+    </div>
+    <div class="ui section divider" style="margin-bottom: 0;margin-top: 0"></div>
+    <% end %>
+  </div>
+
+
+</div>

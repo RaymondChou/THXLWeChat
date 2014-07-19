@@ -3,7 +3,7 @@
      stylesheet_link_tag 'tool/weizhang'
    end
 %>
-<div class="banner">
+<div class="tbanner">
   <%= image_tag 'banner/1.jpg' %>
   <a class="tip">
     <span>
@@ -70,7 +70,7 @@
             }
 
             $('#table_body').append('<div class="ui orange submit button attached" id="back">继续查询</div>');
-            $('#table_body').show();
+            $('#table_body').fadeIn();
             bind_back();
           }
         },
@@ -107,7 +107,7 @@
           }
 
           $('#table_body').append('<div class="ui orange submit button attached" id="back">继续查询</div>');
-          $('#table_body').show();
+          $('#table_body').fadeIn();
           bind_back();
         }
       },
