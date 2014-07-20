@@ -37,14 +37,14 @@ button:
       -
         type: "view"
         name: "金领结服务"
-        url: "http://thxl.memeing.cn/"
-      -
-        type: "view"
-        name: "常用配件查询"
-        url: "http://thxl.memeing.cn/"
+        url: "http://m.chevrolet.com.cn/service.html"
       -
         type: "view"
         name: "保养促销"
+        url: "http://thxl.memeing.cn/"
+      -
+        type: "view"
+        name: "满意度评价"
         url: "http://thxl.memeing.cn/"
 
   -
@@ -57,11 +57,11 @@ button:
       -
         type: "view"
         name: "违章查询"
-        url: "http://thxl.memeing.cn/"
+        url: "http://thxl.memeing.cn/tool/weizhang"
       -
         type: "view"
         name: "潮人堂会员"
-        url: "http://thxl.memeing.cn/"
+        url: "http://www.xici.net/b1285899/"
       -
         type: "view"
         name: "车主活动"
@@ -69,4 +69,4 @@ button:
       -
         type: "view"
         name: "MyChavy"
-        url: "http://thxl.memeing.cn/"
+        url: "http://www.chevrolet.com.cn/aftersales_app/direct-download.html"
