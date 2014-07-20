@@ -1,0 +1,40 @@
+<%
+   content_for :styles do
+     stylesheet_link_tag 'cars'
+   end
+%>
+
+<div class="tbanner">
+  <%= image_tag 'banner/5.jpg' %>
+  <a class="tip">
+    <span>
+      <%= @cars.first.name %>
+    </span>
+  </a>
+</div>
+
+<div class="main_body">
+
+  <div class="ui items" style="margin: 0 auto">
+    <% @cars.each do |car| %>
+      <div class="ui column grid" style="display: block;margin-bottom: 10px;">
+        <div class="row">
+          <div class="column">
+            <a href="<%= detail_car_path(car.id) %>">
+            <div class="ui raised segment">
+              <div class="ui orange ribbon label">￥<%= car.price %></div>
+              <p style="position: absolute;
+                      top: 5px;
+                      left: 40%;
+                      color: #8F8F8F;
+                      font-size: 16px;"><%= car.model %></p>
+            </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+
+</div>

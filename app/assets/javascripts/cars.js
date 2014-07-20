@@ -10,8 +10,5 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require jquery2
-//= require g.base
-//= require iscroll
-//= require common
-
+//= require su/modules/modal.min
+//= require su/modules/dimmer.min

@@ -1,37 +1,3 @@
-(function($) {
-    $.extend($.browser, {
-        client: function() {
-            return {
-                width: document.documentElement.clientWidth,
-                height: document.documentElement.clientHeight,
-                bodyWidth: document.body.clientWidth,
-                bodyHeight: document.body.clientHeight
-            };
-        }
-        , scroll: function() {
-            return {
-                width: document.documentElement.scrollWidth,
-                height: document.documentElement.scrollHeight,
-                bodyWidth: document.body.scrollWidth,
-                bodyHeight: document.body.scrollHeight,
-                left: document.documentElement.scrollLeft + document.body.scrollLeft,
-                top: document.documentElement.scrollTop + document.body.scrollTop
-            };
-        }
-        , screen: function() {
-            return {
-                width: window.screen.width,
-                height: window.screen.height
-            };
-        }
-        , isIE6: $.browser.msie && $.browser.version == 6, isMinW: function(val) {
-            return Math.min($.browser.client().bodyWidth, $.browser.client().width) <= val;
-        }
-        , isMinH: function(val) {
-            return $.browser.client().height <= val;
-        }
-    });
-})(jQuery);
 (function(a) {
     a.fn.jdTab = function(d, i) {
         if (typeof d == "function") {

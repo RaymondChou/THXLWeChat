@@ -4,7 +4,11 @@ THXLWeChat::Application.routes.draw do
 
   resource :wechat, only:[:show, :create]
 
-  resources :cars, only:[:index, :show]
+  resources :cars, only:[:index, :show] do
+    member do
+      get :detail
+    end
+  end
 
   get '/tool/bx_cal', 'tool#bx_cal'
   get '/tool/dk_cal', 'tool#dk_cal'

@@ -1,0 +1,78 @@
+<%
+   content_for :styles do
+     stylesheet_link_tag 'cars'
+   end
+%>
+<%
+   content_for :js do
+     javascript_include_tag 'cars'
+   end
+%>
+<div class="tbanner">
+  <%= image_tag 'banner/5.jpg' %>
+  <a class="tip">
+    <span>
+      <%= @car.name %> <%= @car.model %>
+    </span>
+  </a>
+</div>
+
+<div class="main_body">
+
+  <div class="item">
+    <img style="width: 40%;" src="<%= @car.image %>">
+    <div class="content" style="float: right">
+      <div class="header" style="font-size: 16px;width: 200px;"><%= @car.name %> <%= @car.model %><br></div><br>
+      <span class="ico">￥</span><span class="text_orange" style="font-size: 18px;"><%= @car.price %></span> 元起
+    </div>
+  </div>
+
+  <div class="ui fluid three item menu">
+    <a class="item active">配置参数</a>
+    <a class="item" id="order">
+      <div class="floating ui red label">Hot</div>
+      预约试驾
+    </a>
+    <a class="item" href="tel:13913850894">
+      询问报价</a>
+  </div>
+
+  <div class="ui segment">
+    <div class="ui divided list">
+      <% @car.detail.split("\n").each do |detail| %>
+      <% segment = detail.split(";;") %>
+      <div class="item">
+        <div class="content" style="width: 100%;">
+          <a class="header"><%= segment[0] %></a>
+          <div class="description" style="float: right"><%= segment[1] %></div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="ui modal">
+  <i class="close icon"></i>
+  <div class="header">
+    预约试驾
+  </div>
+  <div class="content">
+    <div class="left">
+      左边的内容。
+    </div>
+    <div class="right">
+      右边的内容。
+    </div>
+  </div>
+  <div class="actions">
+    <div class="ui button">取消</div>
+    <div class="ui button">确定</div>
+  </div>
+</div>
+
+<script>
+  $('#order').click(function(){
+    $('.ui.modal').modal('show');
+  });
+</script>
