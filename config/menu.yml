@@ -9,7 +9,7 @@ button:
       -
         type: "view"
         name: "在售车型"
-        url: "http://thxl.memeing.cn/"
+        url: "http://thxl.memeing.cn/cars"
       -
         type: "view"
         name: "优惠促销"
