@@ -10,6 +10,8 @@ THXLWeChat::Application.routes.draw do
     end
   end
 
+  get '/contact/show', 'contact#show'
+
   get '/tool/bx_cal', 'tool#bx_cal'
   get '/tool/dk_cal', 'tool#dk_cal'
   get '/tool/qk_cal', 'tool#qk_cal'
