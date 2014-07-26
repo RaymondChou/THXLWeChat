@@ -1,0 +1,99 @@
+<%
+   content_for :styles do
+     stylesheet_link_tag 'tool/weizhang'
+   end
+%>
+<div class="tbanner">
+  <%= image_tag 'banner/2.jpg' %>
+  <a class="tip">
+    <span>
+      预约试驾
+    </span>
+  </a>
+</div>
+<div class="main_body">
+
+  <a href="http://map.baidu.com/?newmap=1&s=inf%26uid%3D36852c2d2be5c4f5d13ce3c0%26wd%3D%E5%A4%A9%E6%B3%93%E9%9B%AA%E8%8E%B1%26all%3D1%26c%3D315&from=alamap&tpl=map_singlepoint">
+    <div class="ui warning message" style="display: block">
+      <p>店址：南京市栖霞区仙隐北路28号</p>
+    </div>
+  </a>
+
+  <form action="/order/drive_sub" method="post" id="form_body">
+    <div class="ui form segment">
+      <div class="field">
+        <label>联系人</label>
+        <div class="ui left labeled icon input">
+          <input type="text" placeholder="请输入您的真实姓名" name="name" id="name" value="<%= cookies[:real_name] %>">
+        </div>
+      </div>
+      <div class="field">
+        <label>联系电话</label>
+        <div class="ui left labeled icon input">
+          <input type="tel" placeholder="请输入您的电话" name="phone" id="phone" value="<%= cookies[:phone] %>">
+        </div>
+      </div>
+      <div class="field">
+        <label>试驾车</label>
+        <div class="ui left labeled icon input">
+          <input type="text" placeholder="如: 迈锐宝" name="car" id="car" value="<%= params[:car] %>">
+        </div>
+      </div>
+      <div class="field">
+        <label>车型</label>
+        <div class="ui left labeled icon input">
+          <input type="text" placeholder="如: 1.4T舒适款" name="modal" id="modal" value="<%= params[:modal] %>">
+        </div>
+      </div>
+      <div class="date field">
+        <label>预约时间</label>
+        <div class="ui left labeled icon input">
+          <input type="date" name="time" id="time" style="height: 35px">
+        </div>
+      </div>
+
+      <div class="field">
+        <label>最终确认</label>
+        <div class="ui fluid selection dropdown">
+          <div class="text">仅是为了好玩</div>
+          <i class="dropdown icon"></i>
+          <input type="hidden" name="confirm">
+          <div class="menu">
+            <div class="item" data-value="0">仅是为了好玩</div>
+            <div class="item" data-value="1">需要试驾</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ui form">
+        <div class="field">
+          <label>备注</label>
+          <textarea name="remark" style="height: 60px;min-height: 50px"></textarea>
+        </div>
+      </div>
+
+    <div class="ui orange submit button attached" id="sub">立即预约</div>
+
+    <div class="ui message" style="display: block">
+      <p>欢迎您预约参与免费试驾，亲身体验雪佛兰纯粹驾驶乐趣。在收到您的微信订单后，客服人员将会尽快与您联系。<br>
+        通过填写此份报名电子表单，您已确保您输入的信息真实、有效；并且您同意经销商通过您预留的联络方式与您联系。经销商将保护您的个人隐私，不会将您的信息泄露给任何第三方。<br>
+        表单中的选项均为必填项，烦请输入完整，否则将无法预约受理。如因信息填写错误造成您无法预约试乘试驾，经销商不承担任何责任。</p>
+    </div>
+
+  </div>
+  </form>
+</div>
+
+<%= javascript_include_tag 'su/modules/behavior/form.min' %>
+<%= javascript_include_tag 'su/modules/dropdown.min' %>
+
+<script>
+  $('.ui.selection.dropdown')
+          .dropdown()
+  ;
+
+  $('#sub').click(function(){
+    ShowProgressBar();
+    $('#form_body').submit();
+  });
+</script>

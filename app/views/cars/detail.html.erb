@@ -29,11 +29,11 @@
 
   <div class="ui fluid three item menu" style="margin-top: 20px">
     <a class="item active">配置参数</a>
-    <a class="item" id="order">
+    <a class="item" id="order" href="/order/drive?car=<%= @car.name %>&modal=<%= @car.model %>">
       <div class="floating ui red label">Hot</div>
       预约试驾
     </a>
-    <a class="item" href="tel:13913850894">
+    <a class="item" href="/contact/show">
       询问报价</a>
   </div>
 

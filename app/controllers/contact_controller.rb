@@ -1,7 +1,7 @@
 class ContactController < ApplicationController
 
-  def index
-
+  def show
+    @contacts = Contact.order("sort asc").all
   end
 
 end

@@ -10,6 +10,11 @@ THXLWeChat::Application.routes.draw do
     end
   end
 
+  get '/order/drive', 'order#drive'
+  post '/order/drive_sub', 'order#drive_sub'
+  get '/order/care', 'order#care'
+  post '/order/care_sub', 'order#care_sub'
+
   get '/contact/show', 'contact#show'
 
   get '/tool/bx_cal', 'tool#bx_cal'

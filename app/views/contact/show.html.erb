@@ -5,7 +5,7 @@
 %>
 
 <div class="tbanner">
-  <%= image_tag 'banner/4.jpg' %>
+  <%= image_tag 'banner/9.jpg' %>
   <a class="tip">
     <span>
       联系销售
@@ -16,58 +16,31 @@
 
 <div class="main_body">
   <div class="ui">
+    <% @contacts.each do |contact| %>
     <div class="ui segment selection list" style="margin-bottom: 10px">
       <div class="ui red ribbon label">
-        客户经理
+        <%= contact.zhiwei %>
       </div>
-      <div class="right floated tiny orange ui button">拨打：13913850894</div>
 
-      <div class="item">
-        <img src="http://stc.weimob.com/img/default/car_sell.png" style="width: 20%">
-        <div class="ui grid">
-          <div class="ui eleven wide column">
+      <div class="ui star rating right floated" style="float: right">
+        <%= raw render_stars contact.star %>
+      </div>
 
-            <h3 class="ui header" style="margin-bottom: 5px">
-              王昭君 <div class="ui star rating">
-              <i class="icon active"></i>
-              <i class="icon active"></i>
-              <i class="icon active"></i>
-              <i class="icon active"></i>
-              <i class="icon"></i>
+      <a href="tel:<%= contact.phone %>">
+        <div class="item">
+          <img src="<%= contact.avatar.present? ? contact.avatar : image_path('car_sell.png') %>" style="width: 20%;margin-top: 10px;">
+          <div class="ui grid">
+            <div class="ui eleven wide column">
+
+              <h3 class="ui header" style="margin-bottom: 5px;font-size: 18px;">
+                <%= contact.name %> <span style="font-size: 16px;"><%= contact.phone %></span>
+              </h3>
+              <%= contact.info %>
             </div>
-            </h3>
-            5年以上销售经验
           </div>
-
         </div>
-      </div>
+      </a>
     </div>
-
-    <div class="ui segment selection list" style="margin-bottom: 10px">
-      <div class="ui red ribbon label">
-        客户经理
-      </div>
-      <div class="right floated tiny orange ui button">拨打：13913850894</div>
-
-      <div class="item">
-        <img src="http://stc.weimob.com/img/default/car_sell.png" style="width: 20%">
-        <div class="ui grid">
-          <div class="ui eleven wide column">
-
-            <h3 class="ui header" style="margin-bottom: 5px">
-              王昭君 <div class="ui star rating">
-              <i class="icon active"></i>
-              <i class="icon active"></i>
-              <i class="icon active"></i>
-              <i class="icon active"></i>
-              <i class="icon active"></i>
-            </div>
-            </h3>
-            5年以上销售经验
-          </div>
-
-        </div>
-      </div>
-    </div>
+    <% end %>
   </div>
 </div>

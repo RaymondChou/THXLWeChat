@@ -4,9 +4,9 @@ class CreateOrderDrives < ActiveRecord::Migration
       t.string :name
       t.string :phone
       t.string :car
-      t.date :time
+      t.string :modal
+      t.string :time
       t.string :remark
-      t.string
       t.timestamps
     end
   end
