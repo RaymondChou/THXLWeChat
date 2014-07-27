@@ -4,10 +4,10 @@
    end
 %>
 <div class="tbanner">
-  <%= image_tag 'banner/2.jpg' %>
+  <%= image_tag 'banner/1.jpg' %>
   <a class="tip">
     <span>
-      预约试驾
+      预约保养
     </span>
   </a>
 </div>
@@ -19,7 +19,7 @@
     </div>
   </a>
 
-  <form action="/order/drive_sub" method="post" id="form_body">
+  <form action="/order/care_sub" method="post" id="form_body">
     <div class="ui form segment">
       <div class="field">
         <label>联系人</label>
@@ -34,21 +34,41 @@
         </div>
       </div>
       <div class="field">
-        <label>试驾车</label>
+        <label>车牌号</label>
         <div class="ui left labeled icon input">
-          <input type="text" placeholder="如: 迈锐宝" name="car" id="car" value="<%= params[:car] %>">
+          <input type="text" name="licence" id="licence">
         </div>
       </div>
       <div class="field">
-        <label>车型(选填)</label>
+        <label>公里数</label>
         <div class="ui left labeled icon input">
-          <input type="text" placeholder="如: 1.4T舒适款" name="modal" id="modal" value="<%= params[:modal] %>">
+          <input type="text" name="run_count" id="run_count">
         </div>
       </div>
       <div class="date field">
         <label>预约时间</label>
         <div class="ui left labeled icon input">
           <input type="date" name="time" id="time" style="height: 35px">
+        </div>
+      </div>
+      <div class="field">
+        <label>车型</label>
+        <div class="ui left labeled icon input">
+          <input type="text" name="car" id="car">
+        </div>
+      </div>
+      <div class="field">
+        <label>预约内容</label>
+        <div class="ui fluid selection dropdown">
+          <div class="text">常规保养</div>
+          <i class="dropdown icon"></i>
+          <input type="hidden" name="care_type" value="常规保养">
+          <div class="menu">
+            <div class="item" data-value="常规保养">常规保养</div>
+            <div class="item" data-value="事故维修">事故维修</div>
+            <div class="item" data-value="一般小修">一般小修</div>
+            <div class="item" data-value="紧急救援">紧急救援</div>
+          </div>
         </div>
       </div>
 
@@ -60,7 +80,7 @@
           <input type="hidden" name="confirm">
           <div class="menu">
             <div class="item" data-value="0">仅是为了好玩</div>
-            <div class="item" data-value="1">需要试驾</div>
+            <div class="item" data-value="1">真实预约</div>
           </div>
         </div>
       </div>
@@ -75,9 +95,8 @@
     <div class="ui orange submit button attached" id="sub">立即预约</div>
 
     <div class="ui message" style="display: block">
-      <p>欢迎您预约参与免费试驾，亲身体验雪佛兰纯粹驾驶乐趣。在收到您的微信订单后，客服人员将会尽快与您联系。<br>
-        通过填写此份报名电子表单，您已确保您输入的信息真实、有效；并且您同意经销商通过您预留的联络方式与您联系。经销商将保护您的个人隐私，不会将您的信息泄露给任何第三方。<br>
-        表单中的选项均为必填项，烦请输入完整，否则将无法预约受理。如因信息填写错误造成您无法预约试乘试驾，经销商不承担任何责任。</p>
+      <p>通过填写此份报名电子表单，您已确保您输入的信息真实、有效；并且您同意经销商通过您预留的联络方式与您联系。经销商将保护您的个人隐私，不会将您的信息泄露给任何第三方。<br>
+        表单中的选项均为必填项，烦请输入完整，否则将无法预约受理。如因信息填写错误或不全，造成您无法及时到店预约维修保养，经销商不承担任何责任。</p>
     </div>
 
   </div>
@@ -102,11 +121,19 @@
       return false;
     }
     if($('#car').val() == ""){
-      alert('请输入试驾车');
+      alert('请输入车型');
       return false;
     }
     if($('#time').val() == ""){
       alert('请选择预约时间');
+      return false;
+    }
+    if($('#run_count').val() == ""){
+      alert('请输入公里数');
+      return false;
+    }
+    if($('#licence').val() == ""){
+      alert('请输入车牌号');
       return false;
     }
     ShowProgressBar();

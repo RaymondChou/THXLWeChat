@@ -1,0 +1,58 @@
+<%
+   content_for :styles do
+     stylesheet_link_tag 'tool/weizhang'
+   end
+%>
+<div class="tbanner">
+  <%= image_tag 'banner/5.jpg' %>
+  <a class="tip">
+    <span>
+      <%= @car %> - <%= @licence %>
+    </span>
+  </a>
+</div>
+<div class="main_body">
+
+  <a class="ui submit button attached" href="/tool/care_edit">修改您的爱车信息</a>
+
+
+  <div class="ui segment">
+    <div class="ui icon warning message">
+      <i class="settings icon"></i>
+      <div class="content">
+        <div class="header">
+          <%= @baoyang_day %>天
+        </div>
+        <p>下次保养</p>
+      </div>
+    </div>
+
+    <div class="ui icon message">
+      <i class="shield icon"></i>
+      <div class="content">
+        <div class="header">
+          <%= @baoxian_day %>天
+        </div>
+        <p>下次保险</p>
+      </div>
+    </div>
+
+    <div class="ui icon info message">
+      <i class="stethoscope icon"></i>
+      <div class="content">
+        <div class="header">
+          <%= @nianjian_day %>天
+        </div>
+        <p>下次年检</p>
+      </div>
+    </div>
+
+
+  </div>
+
+  <a class="ui blue submit button attached" href="/contact/show" style="margin-top: 20px">联系销售</a>
+
+  <a class="ui orange submit button attached" href="/order/care" style="margin-top: 20px">保养预约</a>
+
+
+</div>

@@ -1,0 +1,33 @@
+<%
+   content_for :styles do
+     stylesheet_link_tag 'tool/weizhang'
+   end
+%>
+<div class="tbanner">
+  <%= image_tag 'banner/1.jpg' %>
+  <a class="tip">
+    <span>
+      满意度评价
+    </span>
+  </a>
+</div>
+<div class="main_body">
+
+  <div class="ui segment">
+    <div class="ui icon success message">
+      <i class="check icon"></i>
+      <div class="content">
+        <div class="header">
+          评价成功！
+        </div>
+        <p>感谢您的反馈</p>
+      </div>
+    </div>
+
+    <a class="ui orange submit button attached" href="/contact/show" style="margin-top: 20px">联系客服</a>
+
+  </div>
+
+
+
+</div>

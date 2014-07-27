@@ -126,4 +126,56 @@ class ToolController < ApplicationController
     JSON.parse response.body
   end
 
+  def care
+    if cookies[:user_car_id].blank?
+      redirect_to '/tool/care_edit'
+    else
+      @user_car = UserCars.find(cookies[:user_car_id])
+      @baoyang_day = 0
+      if @user_car.last_baoyang_time.present?
+        @baoyang_day = 180 - ((Time.now - Date.parse(@user_car.last_baoyang_time).to_time).to_i/3600/24)%180
+      end
+
+      @baoxian_day = 0
+      if @user_car.last_baoxian_time.present?
+        @baoxian_day = 365 - ((Time.now - Date.parse(@user_car.last_baoxian_time).to_time).to_i/3600/24)%365
+      end
+
+      @nianjian_day = 0
+      if @user_car.licence_time.present?
+        if Time.now - Date.parse(@user_car.licence_time).to_time > 6.years
+          # 一年一次
+          @nianjian_day = 365 - ((Time.now - Date.parse(@user_car.licence_time).to_time).to_i/3600/24)%365
+        else
+          # 两年一次
+          @nianjian_day = 830 - ((Time.now - Date.parse(@user_car.licence_time).to_time).to_i/3600/24)%830
+        end
+      end
+    end
+  end
+
+  def care_edit
+    if cookies[:user_car_id].present?
+      @user_car = UserCars.find(cookies[:user_car_id])
+    else
+      @user_car = UserCars.new
+    end
+  end
+
+  def care_sub
+    params.delete(:controller)
+    params.delete(:action)
+
+    if cookies[:user_car_id].blank?
+      @user_car = UserCars.new(params)
+      @user_car.save
+    else
+      @user_car = UserCars.find(cookies[:user_car_id])
+      @user_car.update_attributes(params)
+    end
+    cookies.permanent[:user_car_id] = @user_car.id
+
+    redirect_to '/tool/care'
+  end
+
 end

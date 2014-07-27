@@ -18,7 +18,12 @@ class OrderController < ApplicationController
   end
 
   def care_sub
-
+    if params[:confirm] == '1'
+      params.delete(:confirm)
+      params.delete(:controller)
+      params.delete(:action)
+      OrderCare.new(params).save
+    end
   end
 
 end

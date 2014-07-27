@@ -21,7 +21,7 @@ button:
       -
         type: "view"
         name: "联系销售"
-        url: "http://thxl.memeing.cn/"
+        url: "http://thxl.memeing.cn/contact/show"
 
   -
     name: "售后服务"
@@ -33,7 +33,7 @@ button:
       -
         type: "view"
         name: "预约保养"
-        url: "http://thxl.memeing.cn/"
+        url: "http://thxl.memeing.cn/order/care"
       -
         type: "view"
         name: "金领结服务"
@@ -45,7 +45,7 @@ button:
       -
         type: "view"
         name: "满意度评价"
-        url: "http://thxl.memeing.cn/"
+        url: "http://thxl.memeing.cn/evaluates/new"
 
   -
     name: "车主之家"
@@ -53,7 +53,7 @@ button:
       -
         type: "view"
         name: "爱车提醒"
-        url: "http://thxl.memeing.cn/"
+        url: "http://thxl.memeing.cn/tool/care"
       -
         type: "view"
         name: "违章查询"

@@ -1,0 +1,112 @@
+<%
+   content_for :styles do
+     stylesheet_link_tag 'tool/weizhang'
+   end
+%>
+<div class="tbanner">
+  <%= image_tag 'banner/9.jpg' %>
+  <a class="tip">
+    <span>
+      满意度评价
+    </span>
+  </a>
+</div>
+<div class="main_body">
+
+  <form action="/evaluates" method="post" id="form_body">
+    <div class="ui form segment">
+      <div class="field">
+        <label>姓名</label>
+        <div class="ui left labeled icon input">
+          <input type="text" placeholder="请输入您的真实姓名" name="name" id="name" value="<%= cookies[:real_name] %>">
+        </div>
+      </div>
+      <div class="field">
+        <label>联系电话</label>
+        <div class="ui left labeled icon input">
+          <input type="tel" placeholder="请输入您的电话" name="phone" id="phone" value="<%= cookies[:phone] %>">
+        </div>
+      </div>
+
+      <div class="field">
+        <label>您对咨询服务的满意程度</label>
+        <div class="ui fluid selection dropdown">
+          <div class="text">请选择</div>
+          <i class="dropdown icon"></i>
+          <input type="hidden" name="service" value="很满意">
+          <div class="menu">
+            <div class="item" data-value="很满意">很满意</div>
+            <div class="item" data-value="满意">满意</div>
+            <div class="item" data-value="一般">一般</div>
+            <div class="item" data-value="不满意">不满意</div>
+            <div class="item" data-value="很不满意">很不满意</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>您对销售人员素质的满意程度</label>
+        <div class="ui fluid selection dropdown">
+          <div class="text">请选择</div>
+          <i class="dropdown icon"></i>
+          <input type="hidden" name="suzhi" value="很满意">
+          <div class="menu">
+            <div class="item" data-value="很满意">很满意</div>
+            <div class="item" data-value="满意">满意</div>
+            <div class="item" data-value="一般">一般</div>
+            <div class="item" data-value="不满意">不满意</div>
+            <div class="item" data-value="很不满意">很不满意</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>您对4S店工作效率的满意程度</label>
+        <div class="ui fluid selection dropdown">
+          <div class="text">请选择</div>
+          <i class="dropdown icon"></i>
+          <input type="hidden" name="xiaolv" value="很满意">
+          <div class="menu">
+            <div class="item" data-value="很满意">很满意</div>
+            <div class="item" data-value="满意">满意</div>
+            <div class="item" data-value="一般">一般</div>
+            <div class="item" data-value="不满意">不满意</div>
+            <div class="item" data-value="很不满意">很不满意</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ui form">
+        <div class="field">
+          <label>备注(选填)</label>
+          <textarea name="remark" style="height: 150px;min-height: 50px"></textarea>
+        </div>
+      </div>
+
+    <div class="ui orange submit button attached" id="sub">提交评价</div>
+
+  </div>
+  </form>
+</div>
+
+<%= javascript_include_tag 'su/modules/behavior/form.min' %>
+<%= javascript_include_tag 'su/modules/dropdown.min' %>
+
+<script>
+  $('.ui.selection.dropdown')
+          .dropdown()
+  ;
+
+  $('#sub').click(function(){
+    if($('#name').val() == ""){
+      alert('请输入联系人姓名');
+      return false;
+    }
+    if($('#phone').val() == ""){
+      alert('请输入联系电话');
+      return false;
+    }
+    ShowProgressBar();
+    $('#form_body').submit();
+  });
+</script>

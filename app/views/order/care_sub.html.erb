@@ -1,0 +1,48 @@
+<%
+   content_for :styles do
+     stylesheet_link_tag 'tool/weizhang'
+   end
+%>
+<div class="tbanner">
+  <%= image_tag 'banner/1.jpg' %>
+  <a class="tip">
+    <span>
+      预约保养
+    </span>
+  </a>
+</div>
+<div class="main_body">
+
+  <div class="ui segment">
+    <div class="ui icon success message">
+      <i class="check icon"></i>
+      <div class="content">
+        <div class="header">
+          预约成功！
+        </div>
+        <p>请等待客服回电</p>
+      </div>
+    </div>
+
+    <a href="http://map.baidu.com/?newmap=1&s=inf%26uid%3D36852c2d2be5c4f5d13ce3c0%26wd%3D%E5%A4%A9%E6%B3%93%E9%9B%AA%E8%8E%B1%26all%3D1%26c%3D315&from=alamap&tpl=map_singlepoint">
+      <div class="ui icon warning message" style="display: block">
+        <i class="map icon"></i>
+        <div class="content">
+          <div class="header">
+            地址
+          </div>
+          <p>南京市栖霞区仙隐北路28号(点击查看地图)</p>
+        </div>
+
+      </div>
+    </a>
+
+    <a class="ui orange submit button attached" href="/contact/show" style="margin-top: 20px">联系客服</a>
+
+    <a class="ui submit button attached" href="/cars" style="margin-top: 20px">看看其他车型</a>
+
+  </div>
+
+
+
+</div>

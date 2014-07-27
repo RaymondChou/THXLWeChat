@@ -4,6 +4,8 @@ THXLWeChat::Application.routes.draw do
 
   resource :wechat, only:[:show, :create]
 
+  resources :evaluates, only:[:new, :create]
+
   resources :cars, only:[:index, :show] do
     member do
       get :detail
@@ -22,5 +24,8 @@ THXLWeChat::Application.routes.draw do
   get '/tool/qk_cal', 'tool#qk_cal'
   get '/tool/weizhang', 'tool#weizhang'
   post '/tool/weizhang_result', 'tool#weizhang_result'
+  get '/tool/care', 'tool#care'
+  get '/tool/care_edit', 'tool#care_edit'
+  post '/tool/care_sub', 'tool#care_sub'
 
 end

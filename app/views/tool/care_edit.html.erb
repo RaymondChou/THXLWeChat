@@ -1,0 +1,109 @@
+<%
+   content_for :styles do
+     stylesheet_link_tag 'tool/weizhang'
+   end
+%>
+<div class="tbanner">
+  <%= image_tag 'banner/5.jpg' %>
+  <a class="tip">
+    <span>
+      修改您的爱车信息
+    </span>
+  </a>
+</div>
+<div class="main_body">
+
+  <form action="/tool/care_sub" method="post" id="form_body">
+    <div class="ui form segment">
+      <div class="field">
+        <label>姓名</label>
+        <div class="ui left labeled icon input">
+          <input type="text" placeholder="请输入您的真实姓名" name="name" id="name" value="<%= @user_car.name %>">
+        </div>
+      </div>
+      <div class="field">
+        <label>联系电话</label>
+        <div class="ui left labeled icon input">
+          <input type="tel" placeholder="请输入您的电话" name="phone" id="phone" value="<%= @user_car.phone %>">
+        </div>
+      </div>
+      <div class="field">
+        <label>车型</label>
+        <div class="ui left labeled icon input">
+          <input type="text" name="car" id="car" value="<%= @user_car.car %>">
+        </div>
+      </div>
+      <div class="field">
+        <label>车牌号</label>
+        <div class="ui left labeled icon input">
+          <input type="text" name="licence" id="licence" value="<%= @user_car.licence %>">
+        </div>
+      </div>
+
+
+      <div class="date field">
+        <label>上牌时间</label>
+        <div class="ui left labeled icon input">
+          <input type="date" name="licence_time" id="licence_time" style="height: 35px" value="<%= @user_car.licence_time %>">
+        </div>
+      </div>
+      <div class="date field">
+        <label>上次保险时间</label>
+        <div class="ui left labeled icon input">
+          <input type="date" name="last_baoxian_time" id="last_baoxian_time" style="height: 35px" value="<%= @user_car.last_baoxian_time %>">
+        </div>
+      </div>
+      <div class="field">
+        <label>上次保险费用(元)</label>
+        <div class="ui left labeled icon input">
+          <input type="tel" name="last_baoxian_price" id="last_baoxian_price" value="<%= @user_car.last_baoxian_price %>">
+        </div>
+      </div>
+      <div class="date field">
+        <label>上次保养时间</label>
+        <div class="ui left labeled icon input">
+          <input type="date" name="last_baoyang_time" id="last_baoyang_time" style="height: 35px" value="<%= @user_car.last_baoyang_time %>">
+        </div>
+      </div>
+      <div class="field">
+        <label>上次保养费用(元)</label>
+        <div class="ui left labeled icon input">
+          <input type="tel" name="last_baoyang_price" id="last_baoyang_price" value="<%= @user_car.last_baoyang_price %>">
+        </div>
+      </div>
+      <div class="field">
+        <label>上次保养公里数</label>
+        <div class="ui left labeled icon input">
+          <input type="text" name="last_baoyang_run_count" id="last_baoyang_run_count" value="<%= @user_car.last_baoyang_run_count %>">
+        </div>
+      </div>
+
+
+
+    <div class="ui orange submit button attached" id="sub">提交修改</div>
+
+  </div>
+  </form>
+</div>
+
+<%= javascript_include_tag 'su/modules/behavior/form.min' %>
+<%= javascript_include_tag 'su/modules/dropdown.min' %>
+
+<script>
+  $('#sub').click(function(){
+    if($('#name').val() == ""){
+      alert('请输入联系人姓名');
+      return false;
+    }
+    if($('#phone').val() == ""){
+      alert('请输入联系电话');
+      return false;
+    }
+    if($('#licence').val() == ""){
+      alert('请输入车牌号');
+      return false;
+    }
+    ShowProgressBar();
+    $('#form_body').submit();
+  });
+</script>
