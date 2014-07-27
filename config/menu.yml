@@ -5,7 +5,7 @@ button:
       -
         type: "view"
         name: "最新资讯"
-        url: "http://thxl.memeing.cn/"
+        url: "http://thxl.memeing.cn/page/news"
       -
         type: "view"
         name: "在售车型"
@@ -13,11 +13,11 @@ button:
       -
         type: "view"
         name: "优惠促销"
-        url: "http://thxl.memeing.cn/"
+        url: "http://thxl.memeing.cn/page/youhui"
       -
         type: "view"
         name: "车展团购报名"
-        url: "http://thxl.memeing.cn/"
+        url: "http://thxl.memeing.cn/page/tuangou"
       -
         type: "view"
         name: "联系销售"
@@ -29,7 +29,7 @@ button:
       -
         type: "view"
         name: "24小时救援"
-        url: "http://thxl.memeing.cn/"
+        url: "http://thxl.memeing.cn/page/jiuyuan"
       -
         type: "view"
         name: "预约保养"
@@ -41,7 +41,7 @@ button:
       -
         type: "view"
         name: "保养促销"
-        url: "http://thxl.memeing.cn/"
+        url: "http://thxl.memeing.cn/page/baoyang"
       -
         type: "view"
         name: "满意度评价"
@@ -52,7 +52,7 @@ button:
     sub_button:
       -
         type: "view"
-        name: "爱车提醒"
+        name: "车主关怀"
         url: "http://thxl.memeing.cn/tool/care"
       -
         type: "view"
@@ -65,7 +65,7 @@ button:
       -
         type: "view"
         name: "车主活动"
-        url: "http://thxl.memeing.cn/"
+        url: "http://thxl.memeing.cn/page/huodong"
       -
         type: "view"
         name: "MyChavy"

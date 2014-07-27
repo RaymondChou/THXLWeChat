@@ -28,4 +28,6 @@ THXLWeChat::Application.routes.draw do
   get '/tool/care_edit', 'tool#care_edit'
   post '/tool/care_sub', 'tool#care_sub'
 
+  match '/page/:id' => 'home#page'
+
 end
