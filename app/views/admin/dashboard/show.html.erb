@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>江苏天泓雪佛兰4S店</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, , maximum-scale=1.0, minimum-scale=1.0, user-scalable=1' />
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="HandheldFriendly" content="True">
+  <link href="/icon114.jpg" sizes="57x57" rel="apple-touch-icon">
+  <link href="/icon114.jpg" sizes="114x114" rel="apple-touch-icon">
+  <meta http-equiv="cleartype" content="on">
+
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <%= yield :styles %>
+</head>
+<body>
+
+<script>
+  function ShowProgressBar() {
+    displayProgress();
+    displayMaskFrame();
+    masked = true;
+    $(window).resize(function(){
+      if(masked == true){
+        displayMaskFrame();
+        displayProgress();
+      }
+    });
+  }
+
+  function HideProgressBar() {
+    var progress = $('#divProgress');
+    var maskFrame = $("#divMaskFrame");
+    progress.hide();
+    maskFrame.hide();
+    masked = false;
+  }
+
+  function displayProgress() {
+    var w = $(document).width();
+    var h = $(window).height();
+    var progress = $('#divProgress');
+    progress.css({ "z-index": 999999, "top": (h / 2) - (progress.height() / 2), "left": (w / 2) - (progress.width() / 2) });
+    progress.show();
+  }
+
+  function displayMaskFrame() {
+    var w = $(window).width();
+    var h = $(document).height();
+    var maskFrame = $("#divMaskFrame");
+    maskFrame.css({ "z-index": 999998, "opacity": 0.7, "width": w, "height": h });
+    maskFrame.show();
+  }
+
+  window.weixinReady = false;
+  window.weixinReadyCallBack = '';
+  document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+
+    WeixinJSBridge.call('hideToolbar');
+
+    window.weixinReady = true;
+
+    if (window.weixinReadyCallBack) {
+      window.weixinReadyCallBack();
+    }
+  }, false);
+</script>
+
+<div id="divProgress" style="text-align:center; display: none; position: fixed; top: 50%;  left: 50%;" >
+  <%= image_tag 'loading.gif', :style => 'width: 40px;height: 40px;margin-bottom: 10px;' %>
+  <br />
+  <a style="color: white;font-size: 16px;font-weight: bold"  id="wait_text">请稍后...</a>
+</div>
+<div id="divMaskFrame" style="background-color: #2e2e2e; display: none; left: 0;position: absolute; top: 0;"></div>
+
+<%= yield %>
+
+<div class="footer">
+  <a data-rel="back" data-role="none" class="back"><p></p></a>
+  <a data-role="none" href="/tool/care"><p></p></a>
+  <a data-role="none" class="contect" href="/contact/show"><p></p></a>
+  <a data-role="none" href="/"><p></p></a>
+</div>
+
+<%= yield :js %>
+
+</body>
+</html>

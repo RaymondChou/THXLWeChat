@@ -30,4 +30,12 @@ THXLWeChat::Application.routes.draw do
 
   match '/page/:id' => 'home#page'
 
+  # 后台权限登录控制
+  devise_for :admin,
+             :controllers => { :sessions => 'admin/sessions' }
+
+  namespace :admin do
+    root :to => 'dashboard#show'
+  end
+
 end

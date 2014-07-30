@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+
+  <!-- start: Meta -->
+  <meta charset="utf-8" />
+  <title>江苏天泓雪莱</title>
+  <!-- end: Meta -->
+
+  <!-- start: Mobile Specific -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- end: Mobile Specific -->
+
+  <!-- start: CSS -->
+  <%= stylesheet_link_tag 'admin/application' %>
+  <!-- end: CSS -->
+
+  <!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+  <script src="http://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+  <%= stylesheet_link_tag 'ie' %>
+  <![endif]-->
+
+  <!--[if IE 9]>
+    <%= stylesheet_link_tag 'ie9' %>
+  <![endif]-->
+
+  <style type="text/css">
+    body { background: url(<%= image_path 'admin/bg-login.jpg' %>) !important; }
+  </style>
+
+
+
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
+
+<body>
+<div class="container-fluid">
+  <div class="row-fluid">
+
+
+    <div class="row-fluid">
+      <div class="login-box">
+        <div class="icons">
+          <a href="https://mp.weixin.qq.com/" target="_blank"><i class="halflings-icon home"></i></a>
+          <a href="#"><i class="halflings-icon cog"></i></a>
+        </div>
+        <h2>微信后台登录</h2>
+        <%= form_for(resource, :html => {:class => 'form-horizontal', :name => 'formLogin'}, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+        <fieldset>
+          <%=  %>
+          <div class="input-prepend" title="Username">
+            <span class="add-on"><i class="halflings-icon user"></i></span>
+            <input class="input-large span10" name="admin[admin_name]" id="username" type="text" placeholder="账号" />
+          </div>
+          <div class="clearfix"></div>
+
+          <div class="input-prepend" title="Password">
+            <span class="add-on"><i class="halflings-icon lock"></i></span>
+            <input class="input-large span10" name="admin[password]" id="password" type="password" placeholder="密码" />
+          </div>
+          <div class="clearfix"></div>
+
+          <label class="remember" for="remember"><input type="checkbox" name="admin[remember_me]" value="1" id="remember" />下次自动登录</label>
+
+          <div class="button-login">
+            <button type="submit" class="btn btn-primary">登录</button>
+          </div>
+          <div class="clearfix"></div>
+          <% end %>
+
+        </fieldset></div><!--/span-->
+    </div><!--/row-->
+
+
+  </div><!--/fluid-row-->
+
+</div><!--/.fluid-container-->
+
+<!-- start: JavaScript-->
+<%= javascript_include_tag 'admin/application' %>
+
+<%p flash %>
+<% if flash.present? %>
+  <script>
+    <% flash.each do |name, msg| %>
+    <% next if msg.to_s == 'true' %>
+    noty({"text":"<%= msg %>","layout":"bottomRight","type":"<%= if name.to_s == 'notice'; 'success' else 'error' end %>"});
+    <% end %>
+  </script>
+<% end %>
+<!-- end: JavaScript-->
+
+</body>
+</html>
