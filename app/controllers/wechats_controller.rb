@@ -2,14 +2,14 @@ class WechatsController < ApplicationController
   wechat_responder
 
   on :event, :with => 'subscribe' do |request, content|
-    request.reply.news do |article|
+    request.reply.news do |article, i|
       article.item title: "欢迎关注江苏天泓雪莱", description:"点击进入微官网", pic_url: "http://mmbiz.qpic.cn/mmbiz/9BP0w04QGTCdyrBmxib4mx9elLl4icp5cAOQOPAFs3anB4kHTCL1eH5LAKKfoB3S1ggO9W5x7MsTERibviaVSXRe5Q/640", url:"http://thxl.memeing.cn"
     end
   end
 
   # 默认的文字信息responder
   on :text do |request, content|
-    request.reply.news do |article|
+    request.reply.news do |article, i|
       article.item title: "欢迎关注江苏天泓雪莱", description:"点击进入微官网", pic_url: "http://mmbiz.qpic.cn/mmbiz/9BP0w04QGTCdyrBmxib4mx9elLl4icp5cAOQOPAFs3anB4kHTCL1eH5LAKKfoB3S1ggO9W5x7MsTERibviaVSXRe5Q/640", url:"http://thxl.memeing.cn"
     end
   end
@@ -42,7 +42,7 @@ class WechatsController < ApplicationController
 
   # 当无任何responder处理用户信息时,使用这个responder处理
   on :fallback do |request|
-    request.reply.news do |article|
+    request.reply.news do |article, i|
       article.item title: "欢迎关注江苏天泓雪莱", description:"点击进入微官网", pic_url: "http://mmbiz.qpic.cn/mmbiz/9BP0w04QGTCdyrBmxib4mx9elLl4icp5cAOQOPAFs3anB4kHTCL1eH5LAKKfoB3S1ggO9W5x7MsTERibviaVSXRe5Q/640", url:"http://thxl.memeing.cn"
     end
   end
