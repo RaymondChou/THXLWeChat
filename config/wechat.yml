@@ -1,6 +1,6 @@
 default: &default
-  appid: "wx6ad32f52e868ea55"
-  secret: "d1b4c55f277456aef9718f525e8a9b46"
+  appid: "wx0d90bbe7f94431d5"
+  secret: "4eca0a6cdcaba8109df14490c21bfa32"
   token:  "jsthxl"
   access_token: "/tmp/thxl_wechat_access_token"
 
