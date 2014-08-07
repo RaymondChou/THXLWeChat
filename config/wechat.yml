@@ -2,7 +2,7 @@ default: &default
   appid: "wx0d90bbe7f94431d5"
   secret: "4eca0a6cdcaba8109df14490c21bfa32"
   token:  "jsthxl"
-  access_token: "/tmp/thxl_wechat_access_token"
+  access_token: "/tmp/wx0d90bbe7f94431d5_access_token"
 
 production:
   <<: *default
