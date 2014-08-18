@@ -11,6 +11,7 @@ load 'config/recipes/check'
 load 'config/recipes/nginx'
 load 'config/recipes/mysql'
 load 'config/recipes/unicorn'
+load 'config/recipes/upload'
 
 set :application, 'thxl'
 set :user, 'deployer'

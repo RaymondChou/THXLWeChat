@@ -11,6 +11,7 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery2
+//= require admin/rails
 //= require g.base
 //= require iscroll
 //= require common

@@ -36,6 +36,14 @@ THXLWeChat::Application.routes.draw do
 
   namespace :admin do
     root :to => 'dashboard#show'
+
+    resources :order_drive
+
+    resources :user_car
+
+    resources :evaluate
+
+    resources :contacts
   end
 
 end

@@ -11,5 +11,6 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require 'jquery-1.9.1.min'
+//= require 'admin/jquery.dataTables.min.js'
 //= require_tree .
 

@@ -1,0 +1,47 @@
+<div class="row-fluid">
+
+  <div class="box span12">
+    <div class="box-header" data-original-title="">
+      <h2><i class="halflings-icon user"></i><span class="break"></span>车主关怀</h2>
+    </div>
+    <div class="box-content">
+      <table class="table table-striped table-bordered bootstrap-datatable">
+        <thead>
+        <tr>
+          <th>姓名</th>
+          <th>手机</th>
+          <th>车牌</th>
+          <th>车型</th>
+          <th>配置</th>
+          <th>上牌时间</th>
+          <th>上次保险时间</th>
+          <th>上次保险费用</th>
+          <th>上次保养时间</th>
+          <th>上次保养公里数</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @user_cars.each do |order| %>
+          <tr>
+            <td><%= order.name %></td>
+            <td class="center"><%= order.phone %></td>
+            <td class="center"><%= order.licence %></td>
+            <td class="center"><%= order.car %></td>
+            <td class="center"><%= order.modal %></td>
+            <td class="center"><%= order.last_baoxian_time %></td>
+            <td class="center"><%= order.last_baoxian_price %></td>
+            <td class="center"><%= order.licence_time %></td>
+            <td class="center"><%= order.last_baoyang_time %></td>
+            <td class="center"><%= order.last_baoyang_price %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+
+      <%= will_paginate(@user_cars) %>
+
+    </div>
+  </div><!--/span-->
+
+
+</div>

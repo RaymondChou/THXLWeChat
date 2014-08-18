@@ -1,90 +1,45 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>江苏天泓雪佛兰4S店</title>
-  <meta name='viewport' content='width=device-width, initial-scale=1.0, , maximum-scale=1.0, minimum-scale=1.0, user-scalable=1' />
-  <meta content="yes" name="apple-mobile-web-app-capable">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  <meta name="HandheldFriendly" content="True">
-  <link href="/icon114.jpg" sizes="57x57" rel="apple-touch-icon">
-  <link href="/icon114.jpg" sizes="114x114" rel="apple-touch-icon">
-  <meta http-equiv="cleartype" content="on">
+<div class="row-fluid">
 
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-  <%= yield :styles %>
-</head>
-<body>
-
-<script>
-  function ShowProgressBar() {
-    displayProgress();
-    displayMaskFrame();
-    masked = true;
-    $(window).resize(function(){
-      if(masked == true){
-        displayMaskFrame();
-        displayProgress();
-      }
-    });
-  }
-
-  function HideProgressBar() {
-    var progress = $('#divProgress');
-    var maskFrame = $("#divMaskFrame");
-    progress.hide();
-    maskFrame.hide();
-    masked = false;
-  }
-
-  function displayProgress() {
-    var w = $(document).width();
-    var h = $(window).height();
-    var progress = $('#divProgress');
-    progress.css({ "z-index": 999999, "top": (h / 2) - (progress.height() / 2), "left": (w / 2) - (progress.width() / 2) });
-    progress.show();
-  }
-
-  function displayMaskFrame() {
-    var w = $(window).width();
-    var h = $(document).height();
-    var maskFrame = $("#divMaskFrame");
-    maskFrame.css({ "z-index": 999998, "opacity": 0.7, "width": w, "height": h });
-    maskFrame.show();
-  }
-
-  window.weixinReady = false;
-  window.weixinReadyCallBack = '';
-  document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
-
-    WeixinJSBridge.call('hideToolbar');
-
-    window.weixinReady = true;
-
-    if (window.weixinReadyCallBack) {
-      window.weixinReadyCallBack();
-    }
-  }, false);
-</script>
-
-<div id="divProgress" style="text-align:center; display: none; position: fixed; top: 50%;  left: 50%;" >
-  <%= image_tag 'loading.gif', :style => 'width: 40px;height: 40px;margin-bottom: 10px;' %>
-  <br />
-  <a style="color: white;font-size: 16px;font-weight: bold"  id="wait_text">请稍后...</a>
+<div class="box span12">
+<div class="box-header" data-original-title="">
+  <h2><i class="halflings-icon user"></i><span class="break"></span>预约保养</h2>
 </div>
-<div id="divMaskFrame" style="background-color: #2e2e2e; display: none; left: 0;position: absolute; top: 0;"></div>
+<div class="box-content">
+<table class="table table-striped table-bordered bootstrap-datatable">
+<thead>
+<tr>
+  <th>姓名</th>
+  <th>手机</th>
+  <th>车牌</th>
+  <th>里程数</th>
+  <th>预约时间</th>
+  <th>预约类型</th>
+  <th>车型</th>
+  <th>备注</th>
+  <th>提交时间</th>
+</tr>
+</thead>
+<tbody>
+<% @order_cares.each do |order| %>
+<tr>
+  <td><%= order.name %></td>
+  <td class="center"><%= order.phone %></td>
+  <td class="center"><%= order.licence %></td>
+  <td class="center"><%= order.run_count %>万</td>
+  <td class="center"><%= order.time %></td>
+  <td class="center"><%= order.care_type %></td>
+  <td class="center"><%= order.car %></td>
+  <td class="center"><%= order.remark %></td>
+  <td class="center"><%= order.created_at.strftime("%F %T") %></td>
+</tr>
+<% end %>
+</tbody>
+</table>
 
-<%= yield %>
+  <%= will_paginate(@order_cares) %>
 
-<div class="footer">
-  <a data-rel="back" data-role="none" class="back"><p></p></a>
-  <a data-role="none" href="/tool/care"><p></p></a>
-  <a data-role="none" class="contect" href="/contact/show"><p></p></a>
-  <a data-role="none" href="/"><p></p></a>
 </div>
+</div><!--/span-->
 
-<%= yield :js %>
 
-</body>
-</html>
+</div>

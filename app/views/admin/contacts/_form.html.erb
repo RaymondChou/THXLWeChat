@@ -1,0 +1,58 @@
+<%= form_for [:admin, @contact], :html => {:class => 'form-horizontal'} do |f| %>
+  <fieldset>
+  <div class="control-group">
+    <label class="control-label">名称 </label>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'span6' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label">电话 </label>
+    <div class="controls">
+      <%= f.text_field :phone, :class => 'span6' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label">旁注 </label>
+    <div class="controls">
+      <%= f.text_field :zhiwei, :class => 'span6' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label">介绍 </label>
+    <div class="controls">
+      <%= f.text_field :info, :class => 'span6' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label">星级(0-5) </label>
+    <div class="controls">
+      <%= f.text_field :star, :class => 'span2' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label">排序(升序) </label>
+    <div class="controls">
+      <%= f.text_field :sort, :class => 'span2' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label">上传头像（100px*100px） </label>
+    <div class="controls">
+      <%= f.file_field :avatar, :class => 'input-file uniform_o' %>
+    </div>
+  </div>
+
+
+  <div class="form-actions">
+    <%= f.submit :class => 'btn btn-primary', :value => '保存', :title => '请稍后' %>
+    <a class="btn" title="请稍后" href="<%= url_for admin_contacts_path %>" >返回</a>
+  </div>
+  </fieldset>
+<% end %>
