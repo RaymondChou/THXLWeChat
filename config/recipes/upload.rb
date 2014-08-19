@@ -14,7 +14,6 @@ namespace :uploads do
     for the most recently deployed version.
   EOD
   task :symlink, :except => { :no_release => true } do
-    run "rm -rf #{release_path}/public/statics"
     run "ln -nfs #{shared_path}/#{stage}/statics #{release_path}/public/statics"
   end
 
