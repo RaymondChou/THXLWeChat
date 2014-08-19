@@ -24,15 +24,11 @@
     <div id="wrapper" style="overflow: hidden; ">
       <div id="scroller">
         <ul id="thelist">
+          <% @ads.each do |ad| %>
           <li>
-            <a href="#"><img src="<%= image_path 's1.jpg' %>" /></a>
+            <a href="<%= raw ad.url.present? ? ad.url : '#' %>"><img src="<%= image_path ad.image %>" /></a>
           </li>
-          <li>
-            <a href="#"><img src="<%= image_path 's2.jpg' %>" /></a>
-          </li>
-          <li>
-            <a href="#"><img src="<%= image_path 's3.jpg' %>" /></a>
-          </li>
+          <% end %>
         </ul>
       </div>
     </div>

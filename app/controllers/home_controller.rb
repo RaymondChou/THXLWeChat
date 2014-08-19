@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
 
   def index
-
+    @ads = Ad.order('sort asc').all
   end
 
   def page

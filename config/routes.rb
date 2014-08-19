@@ -44,6 +44,16 @@ THXLWeChat::Application.routes.draw do
     resources :evaluate
 
     resources :contacts
+
+    resources :news
+
+    resources :activities
+
+    resources :tuans
+
+    resources :pages
+
+    resources :ads
   end
 
 end

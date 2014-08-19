@@ -1,0 +1,43 @@
+<div class="row-fluid">
+
+  <div class="box span12">
+    <div class="box-header" data-original-title="">
+      <h2><i class="halflings-icon user"></i><span class="break"></span>滚动图</h2>
+      <a class="btn btn-small" style="float: right" href="<%= new_admin_ad_path %>">新建</a>
+    </div>
+    <div class="box-content">
+      <table class="table table-striped table-bordered bootstrap-datatable">
+        <thead>
+        <tr>
+          <th>图片</th>
+          <th>跳转地址</th>
+          <th>排序</th>
+          <th>修改时间</th>
+          <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @ads.each do |order| %>
+          <tr>
+            <td><img src="<%= order.image %>" style="height: 50px;"></td>
+            <td class="center"><%= order.url %></td>
+            <td class="center"><%= order.sort %></td>
+            <td class="center"><%= order.updated_at.strftime("%F %T") %></td>
+            <td>
+              <a class="btn btn-info" href="<%= edit_admin_ad_path(order) %>">
+                编辑
+              </a>
+              <%= link_to '删除', admin_ad_path(order), :method => :delete,  :confirm => "确定要删除吗?", :title => '删除', :class => 'btn btn-danger' %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+
+      <%= will_paginate(@ads) %>
+
+    </div>
+  </div><!--/span-->
+
+
+</div>
